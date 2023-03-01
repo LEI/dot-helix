@@ -55,7 +55,7 @@ name = "rust"
 auto-format = true
 formatter = { command = "rustfmt", args = ["--emit=stdout"] }
 
-[language.config]
+[language.config] #[language-servers.rust-analyzer.config]
 checkOnSave = { command = "clippy" }
 # rust-analyzer.cargo.features = "all"
 
@@ -73,6 +73,28 @@ auto-format = true
 # formatter = { command = "deno", args = ["fmt", "-", "--ext", "ts" ] }
 # pass format options according to https://github.com/typescript-language-server/typescript-language-server#workspacedidchangeconfiguration omitting the "[language].format." prefix.
 # config = { format = { "semicolons" = "insert", "insertSpaceBeforeFunctionParenthesis" = true } }
+
+# language-servers = ["typescript-language-server", "eslint"]
+
+# [language.language-server] #[language-server.eslint]
+# command = "vscode-eslint-language-server"
+# args = ["--stdio"]
+# [language.language-server.config] #[language-server.eslint.config]
+# validate = "on"
+# experimental = { useFlatConfig = false }
+# rulesCustomizations = []
+# run = "onType"
+# problems = { shortenToSingleLine = false }
+# nodePath = ""
+# # debug = true
+# # quiet = false
+# # packageManager = "npm"
+# # options = {}
+# # codeActionsOnSave.rules = []
+# # [codeAction]
+# # disableRuleComment = { "enable" = true, "location" = "sameLine" }
+# # showDocumentation = { "enable" = true }
+# # mode = "all"
 
 [[language]]
 name = "tsx"

@@ -22,7 +22,7 @@ hidden = false
 
 [editor.statusline]
 # left = ["mode", "spinner", "file-name"]
-# center = []
+center = ["version-control"]
 right = [
   "diagnostics",
   "selections",
@@ -120,8 +120,20 @@ C-n = ["extend_to_line_bounds", "delete_selection", "paste_after"]
 # "." = ["search_next", "repeat_last_motion"]
 # ";" = ["search_next", "repeat_last_insert?"]
 space = "goto_last_accessed_file"
-w = ":write"                      # Use <C-w> for window mode
+# Global search current selection output to a scratch buffer
+g = ["yank", ":hsplit-new", "paste_after", ":pipe xargs rg"]
+i = ":toggle lsp.display-inlay-hints"
+w = ":write"                                                 # Use <C-w> for window mode
 q = ":quit"
+
+# Vertical split
+T = [":sh tmux split-window"]
+"\"" = [":sh tmux split-window"]
+# Horizontal split
+"%" = [":sh tmux split-window -h"]
+# Repeat last command in the previously selected tmux pane
+# https://stackoverflow.com/a/39523222/7796750
+t = [":sh tmux send-keys -t :.! !! C-m"]
 
 [keys.normal.backspace]
 c = ":character-info"

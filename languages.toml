@@ -55,7 +55,7 @@ name = "rust"
 auto-format = true
 formatter = { command = "rustfmt", args = ["--emit=stdout"] }
 
-[language.config] #[language-servers.rust-analyzer.config]
+[language-server.rust-analyzer.config]
 checkOnSave = { command = "clippy" }
 # rust-analyzer.cargo.features = "all"
 
@@ -64,7 +64,10 @@ name = "toml"
 auto-format = true
 formatter = { command = "taplo", args = ["fmt", "-"] }
 # https://github.com/helix-editor/helix/issues/5174#issuecomment-1353668616
-language-server = { command = "" }
+language-servers = ["none"]
+
+[language-server.none]
+command = ""
 
 [[language]]
 name = "typescript"
@@ -73,28 +76,44 @@ auto-format = true
 # formatter = { command = "deno", args = ["fmt", "-", "--ext", "ts" ] }
 # pass format options according to https://github.com/typescript-language-server/typescript-language-server#workspacedidchangeconfiguration omitting the "[language].format." prefix.
 # config = { format = { "semicolons" = "insert", "insertSpaceBeforeFunctionParenthesis" = true } }
+language-servers = ["typescript-language-server", "eslint"]
 
-# language-servers = ["typescript-language-server", "eslint"]
+[language-server.eslint]
+command = "vscode-eslint-language-server"
+args = ["--stdio"]
 
-# [language.language-server] #[language-server.eslint]
-# command = "vscode-eslint-language-server"
-# args = ["--stdio"]
-# [language.language-server.config] #[language-server.eslint.config]
-# validate = "on"
-# experimental = { useFlatConfig = false }
-# rulesCustomizations = []
-# run = "onType"
-# problems = { shortenToSingleLine = false }
-# nodePath = ""
-# # debug = true
-# # quiet = false
-# # packageManager = "npm"
-# # options = {}
-# # codeActionsOnSave.rules = []
-# # [codeAction]
-# # disableRuleComment = { "enable" = true, "location" = "sameLine" }
-# # showDocumentation = { "enable" = true }
-# # mode = "all"
+[language-server.eslint.config]
+validate = "on"
+experimental = { useFlatConfig = false }
+rulesCustomizations = []
+run = "onType"
+problems = { shortenToSingleLine = false }
+nodePath = ""
+# debug = true
+# quiet = false
+# packageManager = "npm"
+# options = {}
+# codeActionsOnSave.rules = []
+# [codeAction]
+# disableRuleComment = { enable = true, location = "sameLine" }
+# showDocumentation = { enable = true }
+# mode = "all"
+
+format = true
+#nodePath = ""
+onIgnoredFiles = "off"
+#packageManager = "yarn"
+#quiet = false
+#rulesCustomizations = []
+#run = "onType"
+useESLintClass = false
+#validate = "on"
+codeAction = { disableRuleComment = { enable = true, location = "separateLine" }, showDocumentation = { enable = true } }
+codeActionOnSave = { mode = "all" }
+#experimental = {}
+#problems = { shortenToSingleLine = false }
+workingDirectory = { mode = "auto" }
+
 
 [[language]]
 name = "tsx"

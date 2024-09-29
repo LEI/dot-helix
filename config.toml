@@ -10,16 +10,26 @@ rulers = [80]
 bufferline = "multiple"
 color-modes = true
 
-# [editor.lsp]
-# display-diagnostic-message = false
-# display-messages = true
-
 [editor.cursor-shape]
 insert = "bar"
 select = "underline"
 
 [editor.file-picker]
 hidden = false
+
+[editor.inline-diagnostics]
+cursor-line = "hint"
+other-lines = "error"
+
+[editor.lsp]
+# display-diagnostic-message = false
+# display-messages = true
+
+[editor.persistence]
+old-files = true
+commands = true
+search = true
+clipboard = true
 
 [editor.soft-wrap]
 enable = true

@@ -13,9 +13,9 @@ formatter = { command = "shfmt", args = ["-i", "2"] }
 #name = "html"
 #formatter = { command = "prettier", args = ["--parser", "html"] }
 
-[[language]]
-name = "ini"
-file-types = ["ini", { suffix = "kitty.conf" }] # FIXME
+#[[language]]
+#name = "ini"
+#file-types = ["ini", { suffix = "kitty.conf" }] # FIXME
 
 [[language]]
 name = "javascript"
@@ -76,43 +76,46 @@ auto-format = true
 # formatter = { command = "deno", args = ["fmt", "-", "--ext", "ts" ] }
 # pass format options according to https://github.com/typescript-language-server/typescript-language-server#workspacedidchangeconfiguration omitting the "[language].format." prefix.
 # config = { format = { "semicolons" = "insert", "insertSpaceBeforeFunctionParenthesis" = true } }
-language-servers = ["typescript-language-server", "eslint"]
+language-servers = [
+  "typescript-language-server",
+  "vscode-eslint-language-server",
+]
 
-[language-server.eslint]
-command = "vscode-eslint-language-server"
-args = ["--stdio"]
+# [language-server.eslint]
+# command = "vscode-eslint-language-server"
+# args = ["--stdio"]
 
-[language-server.eslint.config]
-validate = "on"
-experimental = { useFlatConfig = false }
-rulesCustomizations = []
-run = "onType"
-problems = { shortenToSingleLine = false }
-nodePath = ""
-# debug = true
-# quiet = false
-# packageManager = "npm"
-# options = {}
-# codeActionsOnSave.rules = []
-# [codeAction]
-# disableRuleComment = { enable = true, location = "sameLine" }
-# showDocumentation = { enable = true }
-# mode = "all"
+# [language-server.eslint.config]
+# validate = "on"
+# experimental = { useFlatConfig = false }
+# rulesCustomizations = []
+# run = "onType"
+# problems = { shortenToSingleLine = false }
+# nodePath = ""
+# # debug = true
+# # quiet = false
+# # packageManager = "npm"
+# # options = {}
+# # codeActionsOnSave.rules = []
+# # [codeAction]
+# # disableRuleComment = { enable = true, location = "sameLine" }
+# # showDocumentation = { enable = true }
+# # mode = "all"
 
-format = true
-#nodePath = ""
-onIgnoredFiles = "off"
-#packageManager = "yarn"
-#quiet = false
-#rulesCustomizations = []
-#run = "onType"
-useESLintClass = false
-#validate = "on"
-codeAction = { disableRuleComment = { enable = true, location = "separateLine" }, showDocumentation = { enable = true } }
-codeActionOnSave = { mode = "all" }
-#experimental = {}
-#problems = { shortenToSingleLine = false }
-workingDirectory = { mode = "auto" }
+# format = true
+# #nodePath = ""
+# onIgnoredFiles = "off"
+# #packageManager = "yarn"
+# #quiet = false
+# #rulesCustomizations = []
+# #run = "onType"
+# useESLintClass = false
+# #validate = "on"
+# codeAction = { disableRuleComment = { enable = true, location = "separateLine" }, showDocumentation = { enable = true } }
+# codeActionOnSave = { mode = "all" }
+# #experimental = {}
+# #problems = { shortenToSingleLine = false }
+# workingDirectory = { mode = "auto" }
 
 
 [[language]]
